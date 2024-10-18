@@ -1,34 +1,27 @@
 @extends('dashboard.layouts.main')
-
 @section('container')
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h4>Edit Kandidat</h4> 
-</div>
 
-<form action="{{ route('kandidat.update', $kandidat->id_calon) }}" method="POST">
+<h4>Edit siswa</h4>
+
+<form action="{{route('dashboard.kandidat.update', $kandidat->id) }}" method="post" enctype="multipart/form-data">
     @csrf
-    @method('PUT')
+   <input type="hidden" name="fotolama" value="{{$kandidat->foto}}">
+    <label>nama</label>
+    <input type="string" name="nama" value="{{ $kandidat->nama}}" class="form-control mb-2">
     <div class="mb-3">
-        <label for="nis_calon" class="form-label">NIS Calon</label>
-        <input type="text" class="form-control" id="nis_calon" name="nis_calon" value="{{ $kandidat->nis_calon }}" required>
-    </div>
-    <div class="mb-3">
-        <label for="nama_calon" class="form-label">Nama Calon</label>
-        <input type="text" class="form-control" id="nama_calon" name="nama_calon" value="{{ $kandidat->nama_calon }}" required>
-    </div>
-    <div class="mb-3">
-        <label for="text" class="form-label">Text</label>
-        <textarea class="form-control" id="text" name="text" required>{{ $kandidat->text }}</textarea>
-    </div>
-    <div class="mb-3">
-        <label for="suara" class="form-label">Suara</label>
-        <input type="number" class="form-control" id="suara" name="suara" value="{{ $kandidat->suara }}" required>
-    </div>
-    <div class="mb-3">
-        <label for="id_kelas" class="form-label">ID Kelas</label>
-        <input type="number" class="form-control" id="id_kelas" name="id_kelas" value="{{ $kandidat->id_kelas }}" required>
-    </div>
-    <button type="submit" class="btn btn-primary">Update</button>
-    <a href="{{ route('kandidat.index') }}" class="btn btn-secondary">Kembali</a>
+  <label for="foto" class="form-label">foto</label>
+  <input class="form-control" type="file" id="foto" name="foto">
+  @if ($kandidat->foto)
+  <img src="{{ asset($kandidat->foto) }}" alt="foto {{ $kandidat->nama}}" style="width: 150px; margin-top: 10px;">
+  
+  @endif
+</div>
+    <label>visi misi</label>
+    <input type="text" name="visi_misi" value="{{ $kandidat->visi_misi }}" class="form-control mb-2">
+    <label>pengalaman_organisasi</label>
+    <input type="text" name="pengalaman_organisasi"value="{{ $kandidat->pengalaman_organisasi }}" class="form-control mb-2">
+
+    <button class="btn btn-primary">Edit</button>
 </form>
+
 @endsection

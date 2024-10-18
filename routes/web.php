@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\KandidatController;
 
+
+
 Route::get('/', function(){
     return view('landing');
 });
@@ -50,14 +52,25 @@ Route::get('/post/edit/{id}', [DashboardPostController::class, 'edit'])->name('p
 Route::post('/post/update/{id}', [DashboardPostController::class, 'update'])->name('post.update');
 Route::post('/post/delete/{id}', [DashboardPostController::class, 'delete'])->name('post.delete');
 
+Route::resource('/dashboard/menajemen kandidat',KandidatController::class)
+->middleware('auth');
 
-Route::get('/dashboard/kandidat/index', [KandidatController::class, 'index'])->name('kandidat.index');
-Route::prefix('kandidat')->group(function () {
-    Route::get('/', [KandidatController::class, 'index'])->name('kandidat.index'); // Menampilkan daftar kandidat
-    Route::get('/create', [KandidatController::class, 'create'])->name('kandidat.create'); // Form untuk menambah kandidat
-    Route::post('/', [KandidatController::class, 'store'])->name('kandidat.store'); // Menyimpan kandidat baru
-    Route::get('/{id}/edit', [KandidatController::class, 'edit'])->name('kandidat.edit'); // Form untuk edit kandidat
-    Route::put('/{id}', [KandidatController::class, 'update'])->name('kandidat.update'); // Update kandidat
-    Route::delete('/{id}', [KandidatController::class, 'destroy'])->name('kandidat.destroy'); // Hapus kandidat
-    Route::resource('kandidat', KandidatController::class);
+Route::resource('/dashboard/ kandidat',KandidatController::class)
+->middleware('auth');
+
+Route::get('/kandidat', [KandidatController::class, 'tampil'])->name('kandidat.tampil');
+Route::get('/dashboard/kandidat/tampil',[KandidatController::class, 'tampil'])->name('kandidat.tampil');
+Route::get('/dashboard/kandidat/tambah',[KandidatController::class, 'tambah'])->name('dashboard.kandidat.tambah');
+Route::post('/dashboard/kandidat/submit', [KandidatController::class,'submit'])->name('dashboard.kandidat.submit');
+Route::get('/dashboard/kandidat/edit/{id}', [KandidatController::class, 'edit'])->name('dashboard.kandidat.edit');
+Route::post('/dashboard/kandidat/update/{id}', [KandidatController::class, 'update'])->name('dashboard.kandidat.update');
+Route::post('/dashboard/kandidat/delete/{id}', [KandidatController::class, 'delete'])->name('dashboard.kandidat.delete');    
+  
+Route::get('/register', [UserController::class, 'register'])->name('register');
+Route::post('/register-proses', [UserController::class, 'proses'])->name('register-proses');
+
+Route::get('/loginsiswa',function(){
+    return view('login', [
+        'jenis'
+    ]);
 });

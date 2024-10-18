@@ -2,7 +2,7 @@
 
 @section('container')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h4> welcome back user </h4> 
+        <h4> Siswa </h4> 
  </div>
 
  <div class="card">
@@ -25,7 +25,7 @@
     
     <thead>
         <tr>
-            <th scope="col">NIS</th>
+            <th scope="col">NIS</th> 
             <th scope="col">Nama</th>
             <th scope="col">Kelas</th>
             <th scope="col">Jenis Kelamin</th>
@@ -41,8 +41,9 @@
             <td>{{ $post->kelas }}</td>
             <td>{{ $post->jenis_kelamin }}</td>
             <td>
-            <a href="{{ route('post.edit', $post->id) }}" class="btn btn-sm btn-warning">Edit</a>
-            <form action="{{ route('post.delete',$post->id) }}" method="post">
+            <div class="d-flex align-items-center">
+            <a href="{{ route('post.edit', $post->id) }}" class="btn btn-sm btn-warning me-2 ">Edit</a>
+            <form action="{{ route('post.delete',$post->id) }}" method="post" >
                 @csrf
                 <button class="btn btn-sm btn-danger">Hapus</button>
             </form>

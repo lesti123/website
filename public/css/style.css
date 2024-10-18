@@ -1,5 +1,5 @@
 body {
-    background-color: #bcb6be;
+    background-color: #5d585f;
     font-family: 'Ubuntu', sans-serif;
     display: flex;
     justify-content: center;
@@ -9,7 +9,7 @@ body {
 }
 
 .main {
-    background-color: #f7eeee;
+    background-color: #f4f0e6;
     width: 400px;
     padding: 2em;
     border-radius: 1.5em;
@@ -20,7 +20,7 @@ body {
 }
 
 .sign {
-    color: #8C55AA;
+    color: #130e3e;
     font-family: 'Ubuntu', sans-serif;
     font-weight: bold;
     font-size: 23px;
@@ -55,8 +55,8 @@ body {
 
 .submit {
     cursor: pointer;
-    color: #fff;
-    background: linear-gradient(to right, #d7ea2e, #c760dc);
+    color: #ffffff;
+    background: linear-gradient(to right, #0f3c43, #4baacf);
     border: 0;
     padding: 10px 40px;
     font-family: 'Ubuntu', sans-serif;
@@ -74,11 +74,7 @@ body {
     gap: 10px;
 }
 
-.regis-container {
-    width: 1000000px;
-    display: flex;
-    justify-content: center;
-}
+
 .navbar {
     background-color: #e09494;
     overflow: hidden;

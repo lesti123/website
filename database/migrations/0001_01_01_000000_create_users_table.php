@@ -4,21 +4,24 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('name'); // Nama pengguna
+            $table->string('email')->unique(); // Email pengguna yang harus unik
+            $table->timestamp('email_verified_at')->nullable(); // Timestamp untuk verifikasi email
             $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+            $table->integer('role')->default(0);// Password pengguna
+            $table->rememberToken(); // Token untuk "remember me"
+            $table->timestamps(); // Menyimpan created_at dan updated_at
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
@@ -37,13 +40,15 @@ return new class extends Migration
         });
     }
 
+
+
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('users');
-        Schema::dropIfExists('password_reset_tokens');
-        Schema::dropIfExists('sessions');
     }
-};
+}

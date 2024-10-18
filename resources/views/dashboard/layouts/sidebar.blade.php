@@ -1,4 +1,4 @@
-<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-warning sidebar collapse" style="height: 800px;" ;>
+<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse" style="height: 800px;" ;>
       <div class="position-sticky pt-3">
         <ul class="nav flex-column">
           <li class="nav-item">
@@ -14,13 +14,13 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/dashboard/kandidat/index" title="Manajemen Kandidat">
+            <a class="nav-link" href="/dashboard/kandidat/tampil" title="Manajemen Kandidat">
             <span data-feather="file-text"></span>
             Menajemen Kandidat
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/dashboard/kandidat/index" title="Manajemen Kandidat">
+            <a class="nav-link" href="/dashboard/kandidat/index" title="perolehan">
             <span data-feather="file-text"></span>
            Perolehan
             </a>

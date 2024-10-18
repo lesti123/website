@@ -9,7 +9,9 @@ class loginController extends Controller
 {
     public function login()
     {
-        return view('login');
+        return view('login',[
+            'jenis' =>'admin'
+        ]);
     }
 
     public function authenticate(Request $request)

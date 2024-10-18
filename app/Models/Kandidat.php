@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Kandidat extends Model
 {
     use HasFactory;
-    protected $table = 'calon'; // Mengatur nama tabel yang digunakan model ini
+    protected $table = 'kandidat';
 }

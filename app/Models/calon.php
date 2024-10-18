@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class calon extends Model
 {
     use HasFactory;
+
+    
 }

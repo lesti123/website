@@ -10,13 +10,16 @@
 <body>
   <div class="main">
     <p class="sign" align="center">Sign in</p>
-
-    <form class="form1" method="post" action="{{ route('login.post') }}">
+ @if ($jenis == 'admin')
+ <form class="form1" method="post" action="{{ route('login.post') }}">
       @csrf
       <input type="email" name="email" class="form-controller" placeholder="Email" required>
       <input type="password" name="password" class="form-controller" placeholder="Password" required>
       <button type="submit" class="submit">Masuk</button>
     </form>
+    
+ @endif
+    
 
     <p class="forgot" align="center"><a href="#">Forgot Password?</a></p>
   </div>

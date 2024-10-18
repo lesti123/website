@@ -1,69 +1,68 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Kandidat;
+
 use Illuminate\Http\Request;
 
 class KandidatController extends Controller
 {
-    public function index()
-    {
-        $calon = Kandidat::all(); // Mengambil semua kandidat
-        return view('dashboard.kandidat.index', compact('calon')); // Mengirim data ke view
-    }
+   
+   function tampil() {//
+    $kandidat = kandidat::get();
+    return view('dashboard.kandidat.tampil', compact('kandidat'));
+   }
 
-    public function create()
-    {
-        return view('dashboard.kandidat.create'); // Menampilkan form untuk menambah kandidat
-    }
-
-    public function store(Request $request)
-    {
-        $request->validate([
-            'nis_calon' => 'required|string|max:255',
-            'nama_calon' => 'required|string|max:255',
-            'text' => 'required|string',
-            'suara' => 'required|integer',
-            'id_kelas' => 'required|exists:kelas,id_kelas', // Pastikan id_kelas ada di tabel kelas
-        ]);
+   function tambah() {
+    return view('dashboard.kandidat.tambah');
+   }
+  
+   function submit(Request $request) 
+   {
     
-        Kandidat::create([
-            'nis_calon' => $request->nis_calon,
-            'nama_calon' => $request->nama_calon,
-            'text' => $request->text,
-            'suara' => $request->suara,
-            'id_kelas' => $request->id_kelas,
-        ]); // Menyimpan kandidat baru
+    $kandidat = new kandidat();
+    $kandidat->nama = $request->nama;
     
-        return redirect()->route('kandidat.index')->with('success', 'Kandidat berhasil ditambahkan.');
-    }
+       
+    
 
-    public function edit($id)
-    {
-        $kandidat = Kandidat::findOrFail($id); // Menemukan kandidat berdasarkan ID
-        return view('dashboard.kandidat.edit', compact('kandidat')); // Menampilkan form untuk mengedit kandidat
-    }
+    $kandidat->foto = $request->file('foto')->store('foto');
 
-    public function update(Request $request, $id)
-    {
-        $request->validate([
-            'nis_calon' => 'required|string|max:255',
-            'nama_calon' => 'required|string|max:255',
-            'text' => 'required|string',
-            'suara' => 'required|integer',
-            'id_kelas' => 'required|exists:kelas,id_kelas', // Validasi id_kelas
-        ]);
+    $kandidat->visi_misi = $request->visi_misi;
+    $kandidat->pengalaman_organisasi= $request->pengalaman_organisasi;
+    $kandidat->save();
+    return redirect('/dashboard/kandidat/tampil')->with('success', 'Data berhasil ditambahkan');
+   }
 
-        $kandidat = Kandidat::findOrFail($id); // Menemukan kandidat berdasarkan ID
-        $kandidat->update($request->all()); // Memperbarui data kandidat
-        return redirect()->route('dashboard.kandidat.index')->with('success', 'Kandidat berhasil diperbarui.');
-    }
+   public function edit($id){
+    $kandidat = Kandidat::find($id);
+    return view('dashboard.kandidat.edit', compact('kandidat'));
+}
 
-    public function destroy($id)
-    {
-        $kandidat = Kandidat::findOrFail($id); // Menemukan kandidat berdasarkan ID
-        $kandidat->delete(); // Menghapus kandidat
-        return redirect()->route('dashboard.kandidat.index')->with('success', 'Kandidat berhasil dihapus.');
+function update(Request $request,$id) {
+
+    // dd('berhasil');
+    $kandidat = kandidat::find($id);
+    $kandidat->nama = $request->nama;
+    if ($request->file('foto')){
+      $kandidat->foto= $request->file('foto')->store('foto');
+
     }
+    else{
+      $kandidat->foto= $request->fotolama;
+    }
+    $kandidat->visi_misi = $request->visi_misi;
+    $kandidat->pengalaman_organisasi = $request->pengalaman_organisasi;
+    $kandidat->update();
+
+    return redirect('/dashboard/kandidat/tampil')->with('success', 'Data berhasil ditambahkan');
+    
+  }
+
+  function delete($id) {
+    $kandidat = kandidat::findOrFail($id);
+    $kandidat->delete();
+    return redirect('/dashboard/kandidat/tampil')->with('success', 'Data berhasil di hapus');
+  }
+
 }
