@@ -16,20 +16,27 @@ class loginController extends Controller
 
     public function authenticate(Request $request)
     {
+        // Validasi input
         $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
+            'email' => 'required|email',
+            'password' => 'required',
         ]);
 
+        // Proses login
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            // Redirect to named route 'index' after successful login
-            return redirect()->route('index');
+            // Cek role user
+            if (Auth::user()->role == 0) {
+                return redirect()->intended('/siswa')->with('success', 'Login berhasil sebagai siswa!');
+            } elseif (Auth::user()->role == 1) {
+                return redirect()->intended('/dashboard')->with('success', 'Login berhasil sebagai admin!');
+            }
         }
 
+        // Jika gagal login
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ])->onlyInput('email');
+            'email' => 'Email atau password salah.',
+        ])->withInput();
     }
 }

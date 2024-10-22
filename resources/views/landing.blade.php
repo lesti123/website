@@ -71,9 +71,9 @@
         <div class="row gy-4">
           <div class="col-lg-7 order-2 order-lg-1 d-flex flex-column justify-content-center">
              <h2 style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-ser">SELAMAT DATANG </h2>
-            <p> Di website e-voting pemilihan keua osis SMKN 3 PARIAMAN</p>
+            <p> Di website e-voting pemilihan ketua osis SMKN 3 PARIAMAN</p>
             <div class="d-flex">
-              <a href="#about" class="btn-get-started">Get Started</a>
+             
               
             </div>
           </div>

@@ -1,31 +1,43 @@
-<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse" style="height: 800px;" ;>
-      <div class="position-sticky pt-3">
+<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse" style="height: 800px;">
+    <div class="position-sticky pt-3">
         <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/dashboard">
-              <span data-feather="home"></span>
-              Dashboard
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/dashboard/menajemen user">
-              <span data-feather="file"></span>
-              Menajemen user
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/dashboard/kandidat/tampil" title="Manajemen Kandidat">
-            <span data-feather="file-text"></span>
-            Menajemen Kandidat
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/dashboard/kandidat/index" title="perolehan">
-            <span data-feather="file-text"></span>
-           Perolehan
-            </a>
-          </li>
+            <!-- Dashboard selalu tampil untuk semua pengguna -->
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/dashboard">
+                    <span data-feather="home"></span>
+                    Dashboard
+                </a>
+            </li>
 
+            <!-- Logika If-Else untuk mengecek apakah user adalah admin atau bukan -->
+          @if (Auth::user()->role=='1')
+                <!-- Jika user adalah admin -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/dashboard/menajemen user">
+                        <span data-feather="file"></span>
+                        Manajemen User
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/dashboard/kandidat/tampil" title="Manajemen Kandidat">
+                        <span data-feather="file-text"></span>
+                        <span>Manajemen Kandidat</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/perolehan/index" title="Perolehan">
+                        <span data-feather="file-text"></span>
+                        Perolehan
+                    </a>
+                </li>
+                @endif
+                <!-- Jika user adalah role user biasa -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/voting">
+                        <span data-feather="file-text"></span>
+                        Voting
+                    </a>
+                </li>
         </ul>
-      </div>
-    </nav>
+    </div>
+</nav>

@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\KandidatController;
-
+use App\Http\Controllers\PerolehanController;
+use App\Http\Controllers\registrasiController;
 
 
 Route::get('/', function(){
@@ -15,7 +16,11 @@ Route::get('/', function(){
 });
 
 // Rute GET untuk menampilkan form login
-Route::get('/login', [loginController::class, 'login'])->name('login');
+Route::get('/login', [loginController::class, 'login'])->name('login')->middleware('guest');
+
+Route::get('/registrasi', [registrasiController::class, 'registrasiView'])->name('registrasi')->middleware('guest');
+Route::post('/registrasi', [registrasiController::class, 'registrasi'])->name('registrasi.post');
+
 
 // Rute POST untuk menangani proses login
 Route::post('/login', [loginController::class, 'authenticate'])->name('login.post');
@@ -24,6 +29,10 @@ Route::post('/login', [loginController::class, 'authenticate'])->name('login.pos
 Route::get('/dashboard', function(){
     return view('dashboard.index');
 })->middleware('auth')->name('index');
+
+Route::get('/siswa', function(){
+    return view('dashboard.siswa');
+})->middleware('auth')->name('siswa');
 
 Route::post('/logout', function () {
     Auth::logout();
@@ -74,3 +83,7 @@ Route::get('/loginsiswa',function(){
         'jenis'
     ]);
 });
+
+Route::get('/perolehan/index', [PerolehanController::class, 'index']);
+
+

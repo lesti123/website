@@ -12,7 +12,7 @@ class userController extends Controller
     public function index()
     {
       
-        return view('dashboard.posts.index' ) ;//
+        return view('' ) ;//
     }
 
     /**
