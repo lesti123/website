@@ -25,10 +25,9 @@ class DashboardPostController extends Controller
 
     public function submit (Request $request){
         $post = new Post();
-        $post->nis = $request->nis;
         $post->nama = $request->nama;
-        $post->kelas = $request->kelas;
-        $post->jenis_kelamin = $request->jenis_kelamin;
+        $post->email = $request->email;
+        $post->kandidat_vote = $request->kandidat_vote;
         $post->save();
 
         return redirect('/dashboard/menajemen user')->with('success', 'Data berhasil ditambahkan');
@@ -42,10 +41,10 @@ class DashboardPostController extends Controller
 
     function update(Request $request,$id) {
       $post = post::find($id);
-      $post->nis = $request->nis;
-      $post->nama = $request->nama;
-      $post->kelas = $request->kelas;
-      $post->jenis_kelamin = $request->jenis_kelamin;
+      $post->nama= $request->nama;
+      $post->email= $request->email;
+      $post->kandidat_vote = $request->kandidat_vote;
+     
       $post->update();
 
       return redirect('/dashboard/menajemen user')->with('success', 'Data berhasil ditambahkan');

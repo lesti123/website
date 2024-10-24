@@ -4,11 +4,11 @@
 
 <html>
 <head>
-  <title>E-Voting Results</title>
+  <title>E-Voting </title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <h1>E-Voting Results</h1>
+  <h1>E-Voting </h1>
   <canvas id="votingChart"></canvas>
 
   <script>

@@ -13,10 +13,9 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('nis');
             $table->string('nama');
-            $table->string('kelas');
-            $table->string('jenis_kelamin');
+            $table->string('email');
+            $table->string('kandidat vote');
             $table->timestamps();
         });
     }

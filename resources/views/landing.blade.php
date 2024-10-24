@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>halaman landing page</title>
+  <title> landing|page</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -66,59 +66,26 @@
 
     <!-- Hero Section -->
     <section id="hero" class="hero section">
-
       <div class="container">
-        <div class="row gy-4">
-          <div class="col-lg-7 order-2 order-lg-1 d-flex flex-column justify-content-center">
+        <div class="row gy-9">
+          
+          <div class="col-lg-9 order-2 order-lg-1 d-flex flex-column justify-content-center">
              <h2 style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-ser">SELAMAT DATANG </h2>
-            <p> Di website e-voting pemilihan ketua osis SMKN 3 PARIAMAN</p>
+            <p style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"> Di Website E-voting Pemilihan Ketua Osis</p>
             <div class="d-flex">
              
               
             </div>
           </div>
-          <div class="col-lg-5 order-1 order-lg-2 hero-img">
-            <img src="assets/img/hero-img.png" class="img-fluid" alt="">
+          <div class="col-lg-3 order-1 order-lg-1 hero-img">
+            <img src="assets/img/img.png" class="img-fluid" alt="">
           </div>
         </div>
       </div>
 
     </section><!-- /Hero Section -->
 
-      <div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-6 col-lg-4 mb-5">
-    <div class="card shadow-lg">
-      <div class="card">
-        <img src="assets/img/fotosklh.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">SMKN 3 Pariaman</h5>
-          <p class="card-text"> adalah sekolah menengah kejuruan berbasis kelautan den perikanan, yang terletak di Jalan Siti Maggopoh, 
-            Desa Manggung, Kecamatan Pariaman Utara,Kota Pariaman, Provinsi Sumatra Barat, SMKN 3 Pariaman juga memiliki sistem keTarunaan</p>
-        </div>
-      </div>
-      </div>
-    </div>
-
-    <div class="col-md-6 col-lg-4 mb-5">
-    <div class="card shadow-lg">
-      <div class="card">
-      <img src="assets/img/fotojrsan.jpg" class="card-img-bottom" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Jurusan keahlian </h5>
-          <p class="card-text">Teknik Pendinginan dan Tata Udara
-          <p>Rekayasa Perangkat Lunak (RPL)</p>
-          <p>Teknik Komputer dan Jaringan</p>
-          <p>Nautika Kapal Penangkap Ikan</p>
-          <p>Teknika Kapal Penangkap Ikan</p>
-          <p>Agribisnis Perikanan Air Tawar</p>
-        </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
+      
  
 
 
@@ -126,8 +93,8 @@
     <div class="card">
       <div class="card-body">
         <div class="d-sm-flex justify-content-center justify-content-sm-between">
-          <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2020 <a href="https://www.bootstrapdash.com/" class="text-muted" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
-          <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center text-muted">Free <a href="https://www.bootstrapdash.com/" class="text-muted" target="_blank">Bootstrap dashboard</a> templates from Bootstrapdash.com</span>
+          <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2024 <a href="https://www.bootstrapdash.com/" class="text-muted" target="_blank"></span>
+          <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center text-muted"> <a href="https://www.bootstrapdash.com/" class="text-muted" target="_blank"></span>
         </div>
       </div>
     </div>

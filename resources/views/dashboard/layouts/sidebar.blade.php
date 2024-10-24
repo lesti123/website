@@ -10,11 +10,11 @@
             </li>
 
             <!-- Logika If-Else untuk mengecek apakah user adalah admin atau bukan -->
-          @if (Auth::user()->role=='1')
+            @if (Auth::user()->role=='1')
                 <!-- Jika user adalah admin -->
                 <li class="nav-item">
                     <a class="nav-link" href="/dashboard/menajemen user">
-                        <span data-feather="file"></span>
+                        <span data-feather="clipboard"></span>
                         Manajemen User
                     </a>
                 </li>
@@ -26,18 +26,19 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/perolehan/index" title="Perolehan">
-                        <span data-feather="file-text"></span>
+                        <span data-feather="bar-chart"></span>
                         Perolehan
                     </a>
                 </li>
-                @endif
+            @else
                 <!-- Jika user adalah role user biasa -->
                 <li class="nav-item">
-                    <a class="nav-link" href="/voting">
+                    <a class="nav-link" href="/voting" title="voting">
                         <span data-feather="file-text"></span>
                         Voting
                     </a>
                 </li>
+            @endif
         </ul>
     </div>
 </nav>

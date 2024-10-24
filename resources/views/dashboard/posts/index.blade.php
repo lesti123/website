@@ -9,7 +9,7 @@
   <div class="card-header">
   <div class="card mt-5">
     <div class="d-flex">
-    <h5 class="card-header text-white" style="background-color: #087990;">Data siswa</h5>
+    <h5 class="card-header text-white" style="background-color: #087990;">Data vote siswa</h5>
         <div class="ms-auto">
         
         </div>
@@ -25,10 +25,9 @@
     
     <thead>
         <tr>
-            <th scope="col">NIS</th> 
-            <th scope="col">Nama</th>
-            <th scope="col">Kelas</th>
-            <th scope="col">Jenis Kelamin</th>
+            <th scope="col">Nama</th> 
+            <th scope="col">Email</th>
+            <th scope="col">Kandidat Vote</th>
             <th scope="col">Opsi</th>
             
         </tr>
@@ -36,10 +35,10 @@
     <tbody>
         @foreach($posts as $post)
         <tr>
-            <td>{{ $post->nis }}</td>
-            <td>{{ $post->nama }}</td>
-            <td>{{ $post->kelas }}</td>
-            <td>{{ $post->jenis_kelamin }}</td>
+            <td>{{ $post->nama}}</td>
+            <td>{{ $post->email }}</td>
+            <td>{{ $post->kandidat_vote }}</td>
+           
             <td>
             <div class="d-flex align-items-center">
             <a href="{{ route('post.edit', $post->id) }}" class="btn btn-sm btn-warning me-2 ">Edit</a>

@@ -28,7 +28,7 @@ class loginController extends Controller
 
             // Cek role user
             if (Auth::user()->role == 0) {
-                return redirect()->intended('/siswa')->with('success', 'Login berhasil sebagai siswa!');
+                return redirect()->intended('/dashboard')->with('success', 'Login berhasil sebagai siswa!');
             } elseif (Auth::user()->role == 1) {
                 return redirect()->intended('/dashboard')->with('success', 'Login berhasil sebagai admin!');
             }

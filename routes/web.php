@@ -9,7 +9,7 @@ use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\KandidatController;
 use App\Http\Controllers\PerolehanController;
 use App\Http\Controllers\registrasiController;
-
+use App\Http\Controllers\VotingController;
 
 Route::get('/', function(){
     return view('landing');
@@ -75,8 +75,8 @@ Route::get('/dashboard/kandidat/edit/{id}', [KandidatController::class, 'edit'])
 Route::post('/dashboard/kandidat/update/{id}', [KandidatController::class, 'update'])->name('dashboard.kandidat.update');
 Route::post('/dashboard/kandidat/delete/{id}', [KandidatController::class, 'delete'])->name('dashboard.kandidat.delete');    
   
-Route::get('/register', [UserController::class, 'register'])->name('register');
-Route::post('/register-proses', [UserController::class, 'proses'])->name('register-proses');
+Route::get('/register', [UserController::class, 'register'])->name(name: 'register');
+Route::post('/register-proses', [UserController::class, 'proses'])->name(name: 'register-proses');
 
 Route::get('/loginsiswa',function(){
     return view('login', [
@@ -85,5 +85,11 @@ Route::get('/loginsiswa',function(){
 });
 
 Route::get('/perolehan/index', [PerolehanController::class, 'index']);
+
+// Route to display the voting page
+Route::get('/voting', [VotingController::class, 'index'])->name('voting.index');
+
+// Route to handle the voting submission
+Route::post('/voting/{id}', [VotingController::class, 'vote'])->name('voting.vote');
 
 
