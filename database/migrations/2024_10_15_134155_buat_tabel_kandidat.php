@@ -18,6 +18,7 @@ return new class extends Migration
                 $table->string('foto')->nullable(); // Tipe data string untuk menyimpan nama file foto, boleh null
                 $table->text('visi_misi'); // Tipe data text untuk menyimpan visi dan misi
                 $table->text('pengalaman_organisasi')->nullable(); // Tipe data text untuk pengalaman organisasi, boleh null
+                $table->integer('jumlah_vote')->default(0); // Kolom untuk menyimpan jumlah vote, default 0
                 $table->timestamps(); // Menambahkan kolom created_at dan updated_at
             });
         

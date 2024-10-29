@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
+use App\Models\Kandidat;
+use App\Models\User;
+use App\Models\post;
+use Illuminate\Support\Facades\DB;
+
 use Illuminate\Http\Request;
 
 class DashboardPostController extends Controller
@@ -10,10 +14,20 @@ class DashboardPostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(){
-       $posts = Post::get();
-       return view('dashboard.posts.index',compact('posts')); // Kirim data posts ke view
+    public function index()
+    {
+        // Ambil data posts dan join dengan tabel kandidat untuk mendapatkan nama kandidat
+        $posts = DB::table('posts')
+            ->join('kandidat', 'posts.kandidat_id', '=', 'kandidat.id')
+            ->join('users', 'posts.user_id', '=', 'users.id')
+            ->select('posts.*', 'kandidat.nama as kandidat_nama', 'users.name as user_name', 'users.email as user_email')
+            ->get();
+
+    
+        // Kirim data posts ke view
+        return view('dashboard.posts.index', compact('posts'));
     }
+    
 
     /**
      * Show the form for creating a new resource.

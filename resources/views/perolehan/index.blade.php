@@ -2,58 +2,57 @@
 
 @section('container')
 
-<html>
 <head>
-  <title>E-Voting </title>
+  <title>E-Voting</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
-<body>
-  <h1>E-Voting </h1>
-  <canvas id="votingChart"></canvas>
 
-  <script>
-    // Data contoh, Anda bisa mengambil data dari database
-    var candidates = ['Candidate A', 'Candidate B', 'Candidate C'];
-    var voteCount = [400, 320, 180];
-    var totalVotes = voteCount.reduce((a, b) => a + b, 0);
+<h1>E-Voting</h1>
+<canvas id="votingChart"></canvas>
 
-    var ctx = document.getElementById('votingChart').getContext('2d');
-    var votingChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: candidates,
-        datasets: [{
-          label: 'Votes',
-          data: voteCount,
-          backgroundColor: [
-            '#4e73df',
-            '#1cc88a',
-            '#36b9cc'
-          ]
-        }]
+<script>
+ var kandidat = @json($kandidat->pluck('nama')); // Mengambil nama kandidat dari PHP
+var jumlahVote = @json($kandidat->pluck('jumlah_vote')); // Mengambil jumlah vote dari PHP
+
+
+  var ctx = document.getElementById('votingChart').getContext('2d');
+  var votingChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: kandidat,
+      datasets: [{
+        label: 'Votes',
+        data: jumlahVote,
+        backgroundColor: [
+          '#4e73df',
+          '#1cc88a',
+          '#36b9cc',
+          // Tambahkan warna jika ada lebih banyak kandidat
+        ]
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
       },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
+      plugins: {
+        title: {
+          display: true,
+          text: 'E-Voting'
         },
-        plugins: {
-          title: {
-            display: true,
-            text: 'E-Voting '
-          },
-          tooltip: {
-            callbacks: {
-              label: function(context) {
-                return `${context.label}: ${context.formattedValue} votes (${((context.raw / totalVotes) * 100).toFixed(2)}%)`;
-              }
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              return `${context.label}: ${context.formattedValue} votes`;
             }
           }
         }
       }
-    });
-  </script>
-</body>
-</html>
+    }
+  });
+</script>
+
 @endsection

@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('email');
-            $table->string('kandidat vote');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('kandidat_id');
+            
             $table->timestamps();
         });
     }

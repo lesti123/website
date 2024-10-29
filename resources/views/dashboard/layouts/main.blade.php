@@ -9,8 +9,27 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
     rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
      crossorigin="anonymous">
+     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Tambahkan SweetAlert CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-     
+     <style>
+      .nav-link {
+    display: flex;
+    align-items: center;
+}
+
+.nav-link .me-2 {
+    margin-right: 8px; /* Mengatur jarak antara ikon dan teks */
+}
+
+.nav-link .text {
+    white-space: nowrap; /* Mencegah teks berpindah ke bawah */
+    overflow: hidden; /* Menyembunyikan bagian teks yang terlalu panjang */
+    text-overflow: ellipsis; /* Menambahkan titik-titik di akhir jika teks terlalu panjang */
+}
+
+     </style>
 
    
 

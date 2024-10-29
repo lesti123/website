@@ -1,16 +1,12 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
 <div class="container mt-5">
     <h4>Daftar Kandidat</h4>
-
-    <!-- Menampilkan Notifikasi -->
-    @if(session('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ session('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
 
     <div class="row">
         @foreach ($kandidat as $post)
@@ -24,7 +20,7 @@
                         <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#viewModal{{ $post->id }}">
                             View
                         </button>
-                        <form action="{{ route('voting.vote', $post->id) }}" method="POST">
+                        <form action="{{ route('voting.vote', $post->id) }}" method="POST" class="vote-form">
                             @csrf
                             <button type="submit" class="btn btn-sm btn-success">Voting</button>
                         </form>
@@ -54,4 +50,76 @@
         @endforeach
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Variabel untuk melacak status voting
+        let hasVoted = false;
+
+        // Tangani submit form voting dengan AJAX
+        document.querySelectorAll('.vote-form').forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                event.preventDefault(); // Mencegah pengiriman form secara default
+
+                // Cek apakah pengguna sudah memberikan suara
+                if (hasVoted) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Peringatan',
+                        text: 'Anda sudah melakukan voting.',
+                        showConfirmButton: true
+                    });
+                    return; // Keluar dari fungsi jika sudah voting
+                }
+
+                // Ambil URL dan token CSRF
+                const actionUrl = form.action;
+                const csrfToken = form.querySelector('input[name="_token"]').value;
+
+                // Kirim request AJAX untuk voting
+                fetch(actionUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': csrfToken
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        hasVoted = true; // Set status voting
+                        // Tampilkan SweetAlert jika voting berhasil
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Berhasil!',
+                            text: data.message,
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+
+                        // Nonaktifkan tombol setelah voting berhasil
+                        form.querySelector('button[type="submit"]').disabled = true; // Nonaktifkan tombol submit
+                    } else {
+                        // Tampilkan SweetAlert jika voting gagal
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'Voting gagal. Coba lagi.',
+                            showConfirmButton: true
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Terjadi kesalahan. Coba lagi.',
+                        showConfirmButton: true
+                    });
+                });
+            });
+        });
+    });
+</script>
 @endsection

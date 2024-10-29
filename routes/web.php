@@ -91,5 +91,7 @@ Route::get('/voting', [VotingController::class, 'index'])->name('voting.index');
 
 // Route to handle the voting submission
 Route::post('/voting/{id}', [VotingController::class, 'vote'])->name('voting.vote');
+Route::get('/voting/data', [VotingController::class, 'getVotingData'])->name('voting.data');
+Route::get('/perolehan/index', [PerolehanController::class, 'index'])->name('perolehan.index');
 
-
+Route::get('/manajemen-user', [UserController::class, 'index'])->name('posts.index');

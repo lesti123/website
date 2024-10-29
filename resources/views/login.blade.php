@@ -23,9 +23,10 @@
 
       <button type="submit" class="submit">Masuk</button>
     </form>
-
+  
     <p class="sign" align="center">Belum Punya Akun? Registrasi <a href="{{ route('registrasi') }}">Disini</a></p>
   </div>
+  
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
